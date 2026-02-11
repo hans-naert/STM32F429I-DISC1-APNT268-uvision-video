@@ -27,6 +27,8 @@
 static osThreadId_t tid_thrLED;         // Thread id of thread: LED
 static osThreadId_t tid_thrButton;      // Thread id of thread: Button
 
+extern int Init_Thread (void);
+
 extern int Init_GUIThread (void);
 char fbuf[200] = { 0 };
 
@@ -45,10 +47,10 @@ static __NO_RETURN void thrLED (void *argument) {
 
     if (active_flag == 1U) {
       vioSetSignal(vioLED0, vioLEDoff);         // Switch LED0 off
-      vioSetSignal(vioLED1, vioLEDon);          // Switch LED1 on
+      //vioSetSignal(vioLED1, vioLEDon);          // Switch LED1 on
       osDelay(100U);                            // Delay 100 ms
       vioSetSignal(vioLED0, vioLEDon);          // Switch LED0 on
-      vioSetSignal(vioLED1, vioLEDoff);         // Switch LED1 off
+      //vioSetSignal(vioLED1, vioLEDoff);         // Switch LED1 off
       osDelay(100U);                            // Delay 100 ms
     }
     else {
@@ -103,6 +105,7 @@ __NO_RETURN void app_main_thread (void *argument) {
 int app_main (void) {
   osKernelInitialize();                         /* Initialize CMSIS-RTOS2 */
   osThreadNew(app_main_thread, NULL, NULL);
+	Init_Thread();
 	osKernelStart();                              /* Start thread execution */
   return 0;
 }
