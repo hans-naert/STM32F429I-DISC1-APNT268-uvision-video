@@ -106,6 +106,7 @@ int app_main (void) {
   osKernelInitialize();                         /* Initialize CMSIS-RTOS2 */
   osThreadNew(app_main_thread, NULL, NULL);
 	Init_Thread();
+	Init_GUIThread ();
 	osKernelStart();                              /* Start thread execution */
   return 0;
 }

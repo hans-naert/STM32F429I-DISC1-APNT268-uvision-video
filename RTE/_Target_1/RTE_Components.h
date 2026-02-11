@@ -80,6 +80,8 @@
 /* Keil::USB&MDK:Host@8.0.1 */
 #define RTE_USB_Host_0                  /* USB Host 0 */
 
+/* Segger::Graphics&MDK-Plus:CORE@6.32.3 */
+#define RTE_Graphics_Core               /* Graphics Core */
 
 
 #endif /* RTE_COMPONENTS_H */
