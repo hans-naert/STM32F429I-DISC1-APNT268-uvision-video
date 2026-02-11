@@ -475,6 +475,11 @@
               <FileType>1</FileType>
               <FilePath>.\Timer.c</FilePath>
             </File>
+            <File>
+              <FileName>USBH_MSC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USBH_MSC.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -692,6 +697,12 @@
         <Group>
           <GroupName>::Device</GroupName>
         </Group>
+        <Group>
+          <GroupName>::File System</GroupName>
+        </Group>
+        <Group>
+          <GroupName>::USB</GroupName>
+        </Group>
       </Groups>
     </Target>
   </Targets>
@@ -786,6 +797,12 @@
       </api>
       <api Capiversion="1.0.0" Cclass="CMSIS Driver" Cgroup="VIO" exclusive="1">
         <package name="CMSIS" schemaVersion="1.7.40" url="https://www.keil.com/pack/" vendor="ARM" version="6.2.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </api>
+      <api Capiversion="1.1.0" Cclass="CMSIS-Compiler" Cgroup="File Interface" condition="CortexDevice" exclusive="1">
+        <package name="CMSIS-Compiler" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="ARM" version="2.1.0"/>
         <targetInfos>
           <targetInfo name="Target_1"/>
         </targetInfos>
@@ -900,8 +917,44 @@
           <targetInfo name="Target_1"/>
         </targetInfos>
       </component>
+      <component Capiversion="1.0.0" Cclass="CMSIS-Compiler" Cgroup="File Interface" Csub="MDK-MW File System" Cvendor="Keil" Cversion="1.0.1" condition="File System and CMSIS Compiler" ymlID="CMSIS-Compiler:File Interface:MDK-MW File System">
+        <package name="MDK-Middleware" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="Keil" version="8.2.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
       <component Cclass="Device" Cgroup="CubeMX" Cvendor="Keil" Cversion="1.0.0" condition="STM32F4 CMSIS" generator="CubeMX" ymlID="Device:CubeMX">
         <package name="STM32F4xx_DFP" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="Keil" version="3.1.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
+      <component Cbundle="MDK" Cclass="File System" Cgroup="CORE" Cvendor="Keil" Cversion="8.0.2" condition="CMSIS Core with RTOS and File System I/O" ymlID="File System&amp;MDK:CORE">
+        <package name="MDK-Middleware" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="Keil" version="8.2.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
+      <component Cbundle="MDK" Cclass="File System" Cgroup="Drive" Csub="USB" Cvendor="Keil" Cversion="8.0.2" condition="File System and USB Host MSC" maxInstances="2" ymlID="File System&amp;MDK:Drive:USB">
+        <package name="MDK-Middleware" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="Keil" version="8.2.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
+      <component Cbundle="MDK" Cclass="USB" Cgroup="CORE" Cvendor="Keil" Cversion="8.0.1" condition="CMSIS Core with RTOS" ymlID="USB&amp;MDK:CORE">
+        <package name="MDK-Middleware" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="Keil" version="8.2.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
+      <component Cbundle="MDK" Cclass="USB" Cgroup="Host" Csub="MSC" Cvendor="Keil" Cversion="8.0.1" condition="USB Core and Host Instance and Host Driver and File System USB Drive" ymlID="USB&amp;MDK:Host:MSC">
+        <package name="MDK-Middleware" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="Keil" version="8.2.0"/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
+      </component>
+      <component Cbundle="MDK" Cclass="USB" Cgroup="Host" Cvendor="Keil" Cversion="8.0.1" condition="USB Core and Host Driver and Class Instance" maxInstances="4" ymlID="USB&amp;MDK:Host">
+        <package name="MDK-Middleware" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="Keil" version="8.2.0"/>
         <targetInfos>
           <targetInfo name="Target_1"/>
         </targetInfos>
@@ -933,22 +986,28 @@
         </targetInfos>
       </file>
       <file attr="config" category="header" name="Components\FileSystem\Config\FS_Config.h" version="8.0.0">
-        <instance index="0" removed="1">RTE\File_System\FS_Config.h</instance>
+        <instance index="0">RTE\File_System\FS_Config.h</instance>
         <component Cbundle="MDK" Cclass="File System" Cgroup="CORE" Cvendor="Keil" Cversion="8.0.2" condition="CMSIS Core with RTOS and File System I/O"/>
         <package name="MDK-Middleware" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="Keil" version="8.2.0"/>
-        <targetInfos/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
       </file>
       <file attr="config" category="header" name="Components\FileSystem\Config\FS_Config_USB.h" version="6.2.1">
-        <instance index="0" removed="1">RTE\File_System\FS_Config_USB_0.h</instance>
+        <instance index="0">RTE\File_System\FS_Config_USB_0.h</instance>
         <component Cbundle="MDK" Cclass="File System" Cgroup="Drive" Csub="USB" Cvendor="Keil" Cversion="8.0.2" condition="File System and USB Host MSC" maxInstances="2"/>
         <package name="MDK-Middleware" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="Keil" version="8.2.0"/>
-        <targetInfos/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
       </file>
       <file attr="config" category="header" name="Components\FileSystem\Config\FS_Debug.h" version="8.0.0">
-        <instance index="0" removed="1">RTE\File_System\FS_Debug.h</instance>
+        <instance index="0">RTE\File_System\FS_Debug.h</instance>
         <component Cbundle="MDK" Cclass="File System" Cgroup="CORE" Cvendor="Keil" Cversion="8.0.2" condition="CMSIS Core with RTOS and File System I/O"/>
         <package name="MDK-Middleware" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="Keil" version="8.2.0"/>
-        <targetInfos/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
       </file>
       <file attr="config" category="doc" name="emWin\Tool\GUIBuilder.txt" version="1.0.0">
         <instance index="0" removed="1">RTE\Graphics\GUIBuilder.txt</instance>
@@ -969,22 +1028,28 @@
         <targetInfos/>
       </file>
       <file attr="config" category="header" name="Components\USB\Config\USBH_Config.h" version="8.0.0">
-        <instance index="0" removed="1">RTE\USB\USBH_Config_0.h</instance>
+        <instance index="0">RTE\USB\USBH_Config_0.h</instance>
         <component Cbundle="MDK" Cclass="USB" Cgroup="Host" Cvendor="Keil" Cversion="8.0.1" condition="USB Core and Host Driver and Class Instance" maxInstances="4"/>
         <package name="MDK-Middleware" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="Keil" version="8.2.0"/>
-        <targetInfos/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
       </file>
       <file attr="config" category="header" name="Components\USB\Config\USBH_Config_MSC.h" version="5.0.1">
-        <instance index="0" removed="1">RTE\USB\USBH_Config_MSC.h</instance>
+        <instance index="0">RTE\USB\USBH_Config_MSC.h</instance>
         <component Cbundle="MDK" Cclass="USB" Cgroup="Host" Csub="MSC" Cvendor="Keil" Cversion="8.0.1" condition="USB Core and Host Instance and Host Driver and File System USB Drive"/>
         <package name="MDK-Middleware" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="Keil" version="8.2.0"/>
-        <targetInfos/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
       </file>
       <file attr="config" category="header" name="Components\USB\Config\USB_Debug.h" version="8.0.0">
-        <instance index="0" removed="1">RTE\USB\USB_Debug.h</instance>
+        <instance index="0">RTE\USB\USB_Debug.h</instance>
         <component Cbundle="MDK" Cclass="USB" Cgroup="CORE" Cvendor="Keil" Cversion="8.0.1" condition="CMSIS Core with RTOS"/>
         <package name="MDK-Middleware" schemaVersion="1.7.36" url="https://www.keil.com/pack/" vendor="Keil" version="8.2.0"/>
-        <targetInfos/>
+        <targetInfos>
+          <targetInfo name="Target_1"/>
+        </targetInfos>
       </file>
     </files>
   </RTE>

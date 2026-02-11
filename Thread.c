@@ -1,5 +1,9 @@
 #include "cmsis_os2.h"                          // CMSIS RTOS header file
- 
+#include "USBH_MSC.h"
+#include <stdio.h>
+
+char fbuf[200]={0};
+
  extern int Init_Timers (void);
  
 /*----------------------------------------------------------------------------
@@ -21,11 +25,23 @@ int Init_Thread (void) {
 }
  
 void Thread (void *argument) {
+	static unsigned int result; 
+  static FILE *f;
 	
 	Init_Timers();
+	USBH_Initialize (0); 
  
   while (1) {
     ; // Insert thread code here...
+	  result = USBH_MSC_DriveMount ("U0:"); 
+    if (result == USBH_MSC_OK)  { 
+      f = fopen ("Test.txt", "r"); 
+      if (f) { 
+        fread (fbuf, sizeof (fbuf), 1, f); 
+        fclose (f); 
+      } 
+    } 
+    osDelay (1000); 	
     osThreadYield();                            // suspend thread
   }
 }

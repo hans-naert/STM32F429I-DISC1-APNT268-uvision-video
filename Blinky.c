@@ -30,7 +30,7 @@ static osThreadId_t tid_thrButton;      // Thread id of thread: Button
 extern int Init_Thread (void);
 
 extern int Init_GUIThread (void);
-char fbuf[200] = { 0 };
+//char fbuf[200] = { 0 };
 
 /*-----------------------------------------------------------------------------
   thrLED: blink LED

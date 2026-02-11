@@ -9,8 +9,8 @@ build-gen:
     endian: little
     fpu: sp
   add-path:
-    - D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision
-    - D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/ili9341
+    - D:/cursussen/iot-systems-ao/voorbereiding/video
+    - D:/cursussen/iot-systems-ao/voorbereiding/video/ili9341
   components:
     - component: ARM::CMSIS-Compiler:CORE@1.1.0
       from-pack: ARM::CMSIS-Compiler@2.1.0
@@ -23,6 +23,13 @@ build-gen:
       from-pack: ARM::CMSIS-Compiler@2.1.0
     - component: ARM::CMSIS-Compiler:STDOUT:Custom@1.1.0
       from-pack: ARM::CMSIS-Compiler@2.1.0
+    - component: ARM::CMSIS-View:Event Recorder&DAP@1.6.0
+      from-pack: ARM::CMSIS-View@1.2.0
+      files:
+        - file: C:/Users/hansn/AppData/Local/Arm/Packs/ARM/CMSIS-View/1.2.0/EventRecorder/Source/EventRecorder.c
+          category: sourceC
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/RTE/CMSIS-View/EventRecorderConf.h
+          category: header
     - component: ARM::CMSIS:CORE@6.2.0
       from-pack: ARM::CMSIS@6.3.0
     - component: ARM::CMSIS:OS Tick:SysTick@1.0.5
@@ -61,9 +68,9 @@ build-gen:
           category: sourceC
         - file: C:/Users/hansn/AppData/Local/Arm/Packs/ARM/CMSIS-RTX/5.9.0/Source/rtx_timer.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/RTE/CMSIS/RTX_Config.c
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/RTE/CMSIS/RTX_Config.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/RTE/CMSIS/RTX_Config.h
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/RTE/CMSIS/RTX_Config.h
           category: header
     - component: Keil::CMSIS Driver:GPIO@1.2.0
       from-pack: ARM::CMSIS-Driver_STM32@1.3.0
@@ -126,30 +133,30 @@ build-gen:
           category: sourceC
         - file: C:/Users/hansn/AppData/Local/Arm/Packs/Keil/MDK-Middleware/8.2.0/Components/FileSystem/Source/fs_version.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/RTE/File_System/FS_Config.h
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/RTE/File_System/FS_Config.h
           category: header
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/RTE/File_System/FS_Debug.h
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/RTE/File_System/FS_Debug.h
           category: header
     - component: Keil::File System&MDK:Drive:USB@8.0.2
       from-pack: Keil::MDK-Middleware@8.2.0
       files:
         - file: C:/Users/hansn/AppData/Local/Arm/Packs/Keil/MDK-Middleware/8.2.0/Components/FileSystem/Source/fs_usbh_msc.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/RTE/File_System/FS_Config_USB_0.h
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/RTE/File_System/FS_Config_USB_0.h
           category: header
     - component: Keil::USB&MDK:CORE@8.0.1
       from-pack: Keil::MDK-Middleware@8.2.0
       files:
         - file: C:/Users/hansn/AppData/Local/Arm/Packs/Keil/MDK-Middleware/8.2.0/Components/USB/Source/usb_lib_ver.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/RTE/USB/USB_Debug.h
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/RTE/USB/USB_Debug.h
           category: header
     - component: Keil::USB&MDK:Host:MSC@8.0.1
       from-pack: Keil::MDK-Middleware@8.2.0
       files:
         - file: C:/Users/hansn/AppData/Local/Arm/Packs/Keil/MDK-Middleware/8.2.0/Components/USB/Source/usbh_lib_msc.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/RTE/USB/USBH_Config_MSC.h
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/RTE/USB/USBH_Config_MSC.h
           category: header
     - component: Keil::USB&MDK:Host@8.0.1
       from-pack: Keil::MDK-Middleware@8.2.0
@@ -164,32 +171,8 @@ build-gen:
           category: sourceC
         - file: C:/Users/hansn/AppData/Local/Arm/Packs/Keil/MDK-Middleware/8.2.0/Components/USB/Source/usbh_lib_mem.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/RTE/USB/USBH_Config_0.h
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/RTE/USB/USBH_Config_0.h
           category: header
-    - component: Segger::Graphics&MDK-Pro:CORE@6.32.3
-      from-pack: Keil::MDK-Middleware_Graphics@1.3.1
-      files:
-        - file: C:/Users/hansn/AppData/Local/Arm/Packs/Keil/MDK-Middleware_Graphics/1.3.1/emWin/Lib/ARM/GUI_CM4F_L.lib
-          category: library
-        - file: C:/Users/hansn/AppData/Local/Arm/Packs/Keil/MDK-Middleware_Graphics/1.3.1/emWin/Sample/GUI_X/GUI_X_RTE.c
-          category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/RTE/Graphics/GUIConf.c
-          category: sourceC
-    - component: Segger::Graphics&MDK-Pro:Display:Interface Template@6.32.3
-      from-pack: Keil::MDK-Middleware_Graphics@1.3.1
-      files:
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/RTE/Graphics/LCDConf.c
-          category: sourceC
-    - component: Segger::Graphics&MDK-Pro:Input Device:Touchscreen@6.32.3
-      from-pack: Keil::MDK-Middleware_Graphics@1.3.1
-      files:
-        - file: C:/Users/hansn/AppData/Local/Arm/Packs/Keil/MDK-Middleware_Graphics/1.3.1/emWin/Sample/GUI_X/GUI_X_Touch.c
-          category: sourceC
-    - component: Segger::Graphics&MDK-Pro:Tools:GUI Builder@6.32.3
-      from-pack: Keil::MDK-Middleware_Graphics@1.3.1
-      files:
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/RTE/Graphics/GUIBuilder.txt
-          category: doc
   apis:
     - api: CMSIS Driver:GPIO(API)@1.0.0
       from-pack: ARM::CMSIS@6.3.0
@@ -216,23 +199,19 @@ build-gen:
   groups:
     - group: Source Group 1
       files:
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/retarget_stdio.c
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/retarget_stdio.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/Blinky.c
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/Blinky.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/ili9341/ili9341.c
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/ili9341/ili9341.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/stm32f429i_discovery.c
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/stm32f429i_discovery.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/LCD_X.c
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/LCD_X.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/GUI_SingleThread.c
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/Touch_STMPE811.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/LogViewerDLG.c
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/Thread.c
           category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/Touch_STMPE811.c
-          category: sourceC
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/USBH_MSC.h
-          category: header
-        - file: D:/cursussen/iot-systems-ao/voorbereiding/STM32F429I-DISC1-APNT268-uvision/USBH_MSC.c
+        - file: D:/cursussen/iot-systems-ao/voorbereiding/video/Timer.c
           category: sourceC
