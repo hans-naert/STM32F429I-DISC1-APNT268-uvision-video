@@ -18,9 +18,11 @@ osTimerId_t tim_id2;                            // timer id
 static uint32_t exec2;                          // argument for the timer call back function
 
 uint32_t led = vioLEDoff;
+int count=0;
 
 // Periodic Timer Function
 static void Timer2_Callback (void const *arg) {
+	count++;
   // add user code here
   if(led==vioLEDoff)
 			led=vioLEDon;
