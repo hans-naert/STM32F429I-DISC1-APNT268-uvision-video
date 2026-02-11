@@ -82,6 +82,8 @@
 
 /* Segger::Graphics&MDK-Plus:CORE@6.32.3 */
 #define RTE_Graphics_Core               /* Graphics Core */
+/* Segger::Graphics&MDK-Plus:Input Device:Touchscreen@6.32.3 */
+#define RTE_Graphics_Touchscreen        /* Graphics Input Device Touchscreen */
 
 
 #endif /* RTE_COMPONENTS_H */
